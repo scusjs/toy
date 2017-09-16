@@ -10,5 +10,5 @@ logLevel: 0
 # Server 酱配置参考地址：http://sc.ftqq.com/?c=code
 ServerChan:
     scket: ********
-    title: V2EX 签到状态提示
+    title: SMZDM 签到状态提示
     content: 签到结果：{}
