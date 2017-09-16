@@ -1,0 +1,14 @@
+#V2EX用户名信息
+username: username
+#V2EX 密码
+passwd: password
+# 日志类型，支持 ServerChan 和 print
+logType: ServerChan
+# 日志级别，1输出全部内容，0输出错误的内容
+logLevel: 0
+
+# Server 酱配置参考地址：http://sc.ftqq.com/?c=code
+ServerChan:
+    scket: ********
+    title: V2EX 签到状态提示
+    content: 签到结果：{}
