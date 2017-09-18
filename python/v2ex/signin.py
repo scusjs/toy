@@ -34,7 +34,7 @@ def sign(username,passwd):
         loginp=session.post(signin,data=data)
         sign=session.get(url).content.decode("utf8")
         try:
-            if "已连续登录" in sign:
+            if "/mission/daily/redeem" not in sign:
                 printLog("重复签到 " + time.ctime(), 1)
                 return
             qiandao=re.findall("location.href = '(.*?)'",sign)[0]
