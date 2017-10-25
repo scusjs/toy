@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>me.liexing.timestamp</string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>7BD4D7EF-5094-489F-A152-B3E3B2978A80</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E3115CCA-6B2B-4B97-904D-AC40F57EAE6B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>liexing</string>
+	<key>description</key>
+	<string></string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>timestamp</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>timestamp</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>时间戳</string>
+				<key>script</key>
+				<string># -*- coding: utf-8 -*-
+
+'''
+时间戳 v0.1
+
+Author:  liexing
+email: i@liexing.me
+'''
+import time
+import sys
+
+_time = time.time()
+str_time = str(int(_time))
+str_time_point = str(_time)
+
+
+print '&lt;?xml version="1.0"?&gt;&lt;items&gt;&lt;item uid="timeint" arg="' +  str_time + '" valid="yes"&gt;&lt;title&gt;' + str_time + '&lt;/title&gt;&lt;subtitle&gt;整数时间戳&lt;/subtitle&gt;&lt;icon&gt;icon.png&lt;/icon&gt;&lt;/item&gt;&lt;item uid="timefloat" arg="' +  str_time_point + '" valid="yes"&gt;&lt;title&gt;' + str_time_point + '&lt;/title&gt;&lt;subtitle&gt;小数时间戳&lt;/subtitle&gt;&lt;icon&gt;icon.png&lt;/icon&gt;&lt;/item&gt;'
+
+input = sys.argv[1]
+if len(input) == 0:
+	print '&lt;item uid="inputtime" arg="time" valid="yes"&gt;&lt;title&gt;输入时间戳查询年月日，或者时间字符串查询周几&lt;/title&gt;&lt;subtitle&gt;字符串格式：%Y-%m-%d&lt;/subtitle&gt;&lt;icon&gt;icon.png&lt;/icon&gt;&lt;/item&gt;'
+try:
+	if len(input.split('-')) == 1:
+		output=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(int(input)))
+		print '&lt;item uid="inputtime" arg="' +  output + '" valid="yes"&gt;&lt;title&gt;' + output + '&lt;/title&gt;&lt;subtitle&gt;对应时间&lt;/subtitle&gt;&lt;icon&gt;icon.png&lt;/icon&gt;&lt;/item&gt;'
+	else:
+		input_time = time.strptime(input, '%Y-%m-%d')
+		output = str(input_time.tm_wday + 1)
+		print '&lt;item uid="inputtime" arg="' +  output + '" valid="yes"&gt;&lt;title&gt;' + output + '&lt;/title&gt;&lt;subtitle&gt;周几&lt;/subtitle&gt;&lt;icon&gt;icon.png&lt;/icon&gt;&lt;/item&gt;'
+finally:
+	print '&lt;/items&gt;'
+</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>时间戳</string>
+				<key>title</key>
+				<string>时间戳</string>
+				<key>type</key>
+				<integer>3</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>7BD4D7EF-5094-489F-A152-B3E3B2978A80</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>E3115CCA-6B2B-4B97-904D-AC40F57EAE6B</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>7BD4D7EF-5094-489F-A152-B3E3B2978A80</key>
+		<dict>
+			<key>xpos</key>
+			<integer>220</integer>
+			<key>ypos</key>
+			<integer>170</integer>
+		</dict>
+		<key>E3115CCA-6B2B-4B97-904D-AC40F57EAE6B</key>
+		<dict>
+			<key>xpos</key>
+			<integer>510</integer>
+			<key>ypos</key>
+			<integer>170</integer>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>http://blog.liexing.me</string>
+</dict>
+</plist>
